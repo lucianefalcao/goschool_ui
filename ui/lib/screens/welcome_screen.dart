@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/constants.dart';
-import 'package:ui/screens/home_screen.dart';
+import 'package:ui/widgets/bottom_navigation.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -90,12 +90,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (_) => HomeScreen()),
+                    MaterialPageRoute(builder: (_) => BottomNavigation()),
                   );
                 },
                 child: Container(
                   width: 150.0,
-                  height: 60.0,
+                  height: 55.0,
                   padding: EdgeInsets.only(left: 40.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
