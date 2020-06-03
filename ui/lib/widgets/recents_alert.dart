@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:intl/intl.dart';
 import 'package:ui/constants.dart';
+import 'package:ui/helper/color_helper.dart';
 import 'package:ui/models/alert.dart';
+import 'package:ui/widgets/radial_painter.dart';
 
 class RecentsAlerts extends StatefulWidget {
   @override
@@ -16,6 +19,9 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
       itemCount: recentAlerts.length,
       itemBuilder: (BuildContext context, int index) {
         Alert alert = recentAlerts[index];
+        int hoursLeft = alert.time.difference(DateTime.now()).inHours;
+        hoursLeft = hoursLeft < 0 ? -hoursLeft : hoursLeft;
+        double percent = hoursLeft / 48;
         return Row(
           children: <Widget>[
             Container(
@@ -34,15 +40,15 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
               margin: EdgeInsets.only(bottom: 30.0),
               padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
               height: 130.0,
-              width: 316.0,
+              width: 326.0,
               decoration: BoxDecoration(
                 color: kCardColor,
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
+                  topRight: Radius.circular(12.0),
+                  bottomRight: Radius.circular(12.0),
                 ),
               ),
-              child: Row(
+              child: Stack(
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,14 +66,14 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                           Icon(
                             AntDesign.clockcircle,
                             color: kAccentColor,
-                            size: 18.0,
+                            size: 17.0,
                           ),
                           SizedBox(width: 10.0),
                           Text(
-                            "Today, 12:30 PM", // FIXME: Display day and time
+                            "${DateTime.now().weekday == alert.time.weekday ? "Today" : DateFormat.EEEE().format(alert.time)}, ${DateFormat.jm().format(alert.time)}",
                             style: TextStyle(
                               color: kTextColor,
-                              fontSize: 16.0,
+                              fontSize: 15.0,
                             ),
                           ),
                         ],
@@ -78,26 +84,55 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                           Icon(
                             Icons.receipt,
                             color: kAccentColor,
-                            size: 18.0,
+                            size: 17.0,
                           ),
                           SizedBox(width: 10.0),
                           Text(
                             alert.subject,
                             style: TextStyle(
                               color: kTextColor,
-                              fontSize: 16.0,
+                              fontSize: 15.0,
                             ),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  SizedBox(width: 13.0),
-                  Icon(
-                    Icons.account_circle,
-                    size: 100.0,
-                    color: kAccentColor,
-                  ), // TODO: Substite for the countdown
+                  // SizedBox(width: 30.0),
+                  Positioned(
+                    right: 0.0,
+                    child: CustomPaint(
+                      foregroundPainter: RadialPainter(
+                        bgColor: kBGColor,
+                        lineColor: getColor(context, percent),
+                        percent: percent,
+                        width: 4.0,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "$hoursLeft",
+                              style: TextStyle(
+                                color: getColor(context, percent),
+                                fontSize: 26.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              "hours left",
+                              style: TextStyle(
+                                color: getColor(context, percent),
+                                fontSize: 13.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

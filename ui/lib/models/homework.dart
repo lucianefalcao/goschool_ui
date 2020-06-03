@@ -9,12 +9,12 @@ class Homework {
 List<Homework> recentHomeworks = [
   Homework(
     title: "Planimetric Exercises",
-    dueTime: DateTime.parse("2020-06-07 10:30:04z"),
+    dueTime: DateTime.parse("2020-06-07 10:30:04"),
     isDone: false,
   ),
   Homework(
     title: "Visicosity Exercises",
-    dueTime: DateTime.parse("2020-06-07 10:30:04z"),
+    dueTime: DateTime.parse("2020-06-01 10:30:04"),
     isDone: false,
   ),
 ];

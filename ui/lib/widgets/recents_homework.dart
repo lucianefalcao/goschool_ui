@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:intl/intl.dart';
 import 'package:ui/constants.dart';
 import 'package:ui/models/homework.dart';
 
@@ -9,9 +10,6 @@ class RecentHomeworks extends StatefulWidget {
 }
 
 class _RecentHomeworksState extends State<RecentHomeworks> {
-
-  bool _isDone = false;
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -25,10 +23,10 @@ class _RecentHomeworksState extends State<RecentHomeworks> {
               margin: EdgeInsets.only(bottom: 30.0),
               padding: EdgeInsets.fromLTRB(20.0, 20.0, 10.0, 10.0),
               height: 100.0,
-              width: 330.0,
+              width: 341.0,
               decoration: BoxDecoration(
                 color: kCardColor,
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(12.0),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,11 +49,11 @@ class _RecentHomeworksState extends State<RecentHomeworks> {
                           Icon(
                             AntDesign.clockcircle,
                             color: kAccentColor,
-                            size: 18.0,
+                            size: 17.0,
                           ),
                           SizedBox(width: 10.0),
                           Text(
-                            "Today, 12:30 PM", // FIXME: Display day and time
+                            "${DateTime.now().weekday == homework.dueTime.weekday ? "Today" : DateFormat.EEEE().format(homework.dueTime)}, ${DateFormat.jm().format(homework.dueTime)}",
                             style: TextStyle(
                               color: kTextColor,
                               fontSize: 16.0,

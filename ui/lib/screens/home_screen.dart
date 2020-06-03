@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         SizedBox(height: 30.0),
         Container(
-          padding: EdgeInsets.all(40.0),
+          padding: EdgeInsets.all(35.0),
           decoration: BoxDecoration(
             color: kPrimaryColor,
             borderRadius: BorderRadius.only(

@@ -3,8 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ui/constants.dart';
 import 'package:ui/screens/classes_screen.dart';
 import 'package:ui/screens/home_screen.dart';
-import 'package:ui/widgets/recents_alert.dart';
-import 'package:ui/widgets/recents_homework.dart';
 
 class BottomNavigation extends StatefulWidget {
   @override
@@ -34,19 +32,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
       body: Stack(
         children: <Widget>[
           _currentPage,
-          _bn(),
+          _bottomNavigator(),
         ],
       ),
     );
   }
 
-  _updateTabSelection(int index) {
-    setState(() {
-      _selectedTab = index;
-    });
-  }
-
-  _bn() {
+  _bottomNavigator() {
     return Positioned(
       bottom: 0.0,
       left: 0.0,
@@ -63,7 +55,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
           onTap: (int index) {
             setState(() {
               _selectedTab = index;
-              _currentPage = _pages[index];
+              if (index == 0 || index == 1) 
+                _currentPage = _pages[index];
             });
           },
           items: [
