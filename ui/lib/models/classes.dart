@@ -26,12 +26,12 @@ List<Classes> classes = [
     subject: "German",
     type: "Online Class",
     teacherName: "Mary Peterson",
-    time: DateTime.parse("2020-06-04 15:30:00"),
+    time: DateTime.parse("2020-06-06 06:30:00"),
   ),
   Classes(
     subject: "History",
     type: "Online Class",
     teacherName: "Jim Brooke",
-    time: DateTime.parse("2020-06-04 14:30:00"),
+    time: DateTime.parse("2020-06-06 07:30:00"),
   ),
 ];
