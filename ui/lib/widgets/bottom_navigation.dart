@@ -28,7 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Stack(
         children: <Widget>[
           _currentPage,
@@ -50,7 +50,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         ),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: kBackgroundColor,
+          backgroundColor: Theme.of(context).backgroundColor,
           currentIndex: _selectedTab,
           onTap: (int index) {
             setState(() {
@@ -64,15 +64,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
               icon: SvgPicture.asset(
                 "assets/icons/house.svg",
                 width: 35.0,
-                color: _selectedTab == 0 ? kAccentColor : kTextColor,
+                color: _selectedTab == 0 ? Theme.of(context).accentColor : kTextColor,
               ),
               title: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                "assets/icons/read_book2.svg",
+                "assets/icons/read_book.svg",
                 width: 35.0,
-                color: _selectedTab == 1 ? kAccentColor : kTextColor,
+                color: _selectedTab == 1 ? Theme.of(context).accentColor : kTextColor,
               ),
               title: SizedBox.shrink(),
             ),
@@ -80,7 +80,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               icon: SvgPicture.asset(
                 "assets/icons/homework.svg",
                 width: 35.0,
-                color: _selectedTab == 2 ? kAccentColor : kTextColor,
+                color: _selectedTab == 2 ? Theme.of(context).accentColor : kTextColor,
               ),
               title: SizedBox.shrink(),
             ),
@@ -88,7 +88,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               icon: SvgPicture.asset(
                 "assets/icons/comment.svg",
                 width: 35.0,
-                color: _selectedTab == 3 ? kAccentColor : kTextColor,
+                color: _selectedTab == 3 ? Theme.of(context).accentColor : kTextColor,
               ),
               title: SizedBox.shrink(),
             ),

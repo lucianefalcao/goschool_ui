@@ -20,18 +20,18 @@ List<Classes> classes = [
     subject: "Physics",
     type: "Online Class",
     teacherName: "Robert Murray",
-    time: DateTime.parse("2020-06-04 11:30:00"),
+    time: DateTime.parse("2020-06-04 14:30:00"),
   ),
   Classes(
     subject: "German",
     type: "Online Class",
     teacherName: "Mary Peterson",
-    time: DateTime.parse("2020-06-04 12:30:00"),
+    time: DateTime.parse("2020-06-04 15:30:00"),
   ),
   Classes(
     subject: "History",
     type: "Online Class",
     teacherName: "Jim Brooke",
-    time: DateTime.parse("2020-06-04 13:30:00"),
+    time: DateTime.parse("2020-06-04 14:30:00"),
   ),
 ];

@@ -2,13 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 
-class RadialPainter extends CustomPainter {
+class CountdownPainter extends CustomPainter {
   final Color bgColor;
   final Color lineColor;
   final double percent;
   final double width;
 
-  RadialPainter({this.bgColor, this.lineColor, this.percent, this.width});
+  CountdownPainter({this.bgColor, this.lineColor, this.percent, this.width});
 
   @override
   void paint(Canvas canvas, Size size) {

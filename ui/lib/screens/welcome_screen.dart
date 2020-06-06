@@ -12,7 +12,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: Theme.of(context).primaryColor,
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: Stack(
@@ -21,7 +21,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: MediaQuery.of(context).size.height - 100,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: kBackgroundColor,
+                color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50.0),
                   bottomRight: Radius.circular(50.0),
@@ -83,7 +83,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
             Positioned(
-              top: 760.0,
+              top: MediaQuery.of(context).size.height - 130,
               left: 100.0,
               right: 100.0,
               child: GestureDetector(
@@ -99,7 +99,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   padding: EdgeInsets.only(left: 40.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50.0),
-                    color: kAccentColor,
+                    color: Theme.of(context).accentColor,
                   ),
                   child: Row(
                     children: <Widget>[

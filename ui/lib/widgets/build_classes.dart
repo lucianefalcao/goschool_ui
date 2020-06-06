@@ -9,7 +9,6 @@ class BuildClasses extends StatefulWidget {
 }
 
 class _BuildClassesState extends State<BuildClasses> {
-
   DateFormat dateFormat = DateFormat("hh:mm a");
 
   @override
@@ -20,7 +19,7 @@ class _BuildClassesState extends State<BuildClasses> {
       itemCount: classes.length,
       itemBuilder: (BuildContext context, int index) {
         Classes c = classes[index];
-        _getTime(c);
+        _getStatus(c);
         return Column(
           children: <Widget>[
             Row(
@@ -52,7 +51,7 @@ class _BuildClassesState extends State<BuildClasses> {
                         height: 25.0,
                         width: 40.0,
                         decoration: BoxDecoration(
-                          color: kAccentColor,
+                          color: Theme.of(context).accentColor,
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Center(
@@ -83,8 +82,8 @@ class _BuildClassesState extends State<BuildClasses> {
                         Icon(
                           Icons.location_on,
                           color: c.isPassed
-                              ? kAccentColor.withOpacity(0.3)
-                              : kAccentColor,
+                              ? Theme.of(context).accentColor.withOpacity(0.3)
+                              : Theme.of(context).accentColor,
                           size: 20.0,
                         ),
                         SizedBox(width: 8.0),
@@ -106,8 +105,8 @@ class _BuildClassesState extends State<BuildClasses> {
                         Icon(
                           Icons.person,
                           color: c.isPassed
-                              ? kAccentColor.withOpacity(0.3)
-                              : kAccentColor,
+                              ? Theme.of(context).accentColor.withOpacity(0.3)
+                              : Theme.of(context).accentColor,
                           size: 20.0,
                         ),
                         SizedBox(width: 8.0),
@@ -134,27 +133,28 @@ class _BuildClassesState extends State<BuildClasses> {
     );
   }
 
-  _getTime(Classes c) {
+  _getStatus(Classes c) {
     DateTime now = DateTime.now();
-
-    // FIXME: not working correctly
+    DateTime finishedTime = c.time.add(Duration(hours: 1));
 
     if (now.difference(c.time).inMinutes >= 59) {
       c.isPassed = true;
-    } else if (c.time.difference(now).inMinutes <= 59 &&
-        (c.time.hour == now.hour || c.time.difference(now).inHours == 2)) {
+    } else if (now.difference(c.time).inMinutes <= 59 &&
+        now.difference(finishedTime).inMinutes >= -59) {
       c.isHappening = true;
-    } else {
-      c.isHappening = false;
     }
+  }
 
+  _getTime(Classes c) {
     return Container(
       height: 25.0,
       width: 25.0,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: c.isPassed ? kAccentColor.withOpacity(0.3) : kAccentColor,
+          color: c.isPassed
+              ? Theme.of(context).accentColor.withOpacity(0.3)
+              : Theme.of(context).accentColor,
           // width: 2.0,
         ),
       ),
@@ -166,14 +166,16 @@ class _BuildClassesState extends State<BuildClasses> {
     if (c.isPassed) {
       return Icon(
         Icons.check,
-        color: c.isPassed ? kAccentColor.withOpacity(0.3) : kAccentColor,
+        color: c.isPassed
+            ? Theme.of(context).accentColor.withOpacity(0.3)
+            : Theme.of(context).accentColor,
         size: 15.0,
       );
     } else if (c.isHappening) {
       return Container(
         margin: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-          color: kAccentColor,
+          color: Theme.of(context).accentColor,
           shape: BoxShape.circle,
         ),
       );

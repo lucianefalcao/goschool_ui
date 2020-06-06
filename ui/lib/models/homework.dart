@@ -1,20 +1,18 @@
 class Homework {
   final String title;
   final DateTime dueTime;
-  bool isDone;
+  bool isDone = false;
 
-  Homework({this.title, this.dueTime, this.isDone});
+  Homework({this.title, this.dueTime});
 }
 
 List<Homework> recentHomeworks = [
   Homework(
     title: "Planimetric Exercises",
-    dueTime: DateTime.parse("2020-06-07 10:30:04"),
-    isDone: false,
+    dueTime: DateTime.parse("2020-06-08 10:30:00"),
   ),
   Homework(
     title: "Visicosity Exercises",
-    dueTime: DateTime.parse("2020-06-01 10:30:04"),
-    isDone: false,
+    dueTime: DateTime.parse("2020-06-09 14:30:00"),
   ),
 ];

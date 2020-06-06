@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:intl/intl.dart';
 import 'package:ui/constants.dart';
-import 'package:ui/helper/color_helper.dart';
 import 'package:ui/models/alert.dart';
-import 'package:ui/widgets/radial_painter.dart';
+import 'package:ui/widgets/countdown_painter.dart';
 
 class RecentsAlerts extends StatefulWidget {
   @override
@@ -12,6 +11,9 @@ class RecentsAlerts extends StatefulWidget {
 }
 
 class _RecentsAlertsState extends State<RecentsAlerts> {
+
+  DateFormat dateFormat = DateFormat("hh:mm a");
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -19,9 +21,10 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
       itemCount: recentAlerts.length,
       itemBuilder: (BuildContext context, int index) {
         Alert alert = recentAlerts[index];
-        int hoursLeft = alert.time.difference(DateTime.now()).inHours;
-        hoursLeft = hoursLeft < 0 ? -hoursLeft : hoursLeft;
+        int hoursLeft = DateTime.now().difference(alert.time).inHours;
+        hoursLeft = hoursLeft < 0 ? -hoursLeft : 0;
         double percent = hoursLeft / 48;
+
         return Row(
           children: <Widget>[
             Container(
@@ -29,7 +32,7 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
               height: 130.0,
               width: 15.0,
               decoration: BoxDecoration(
-                color: kAccentColor,
+                color: Theme.of(context).accentColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   bottomLeft: Radius.circular(30.0),
@@ -65,12 +68,12 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                         children: <Widget>[
                           Icon(
                             AntDesign.clockcircle,
-                            color: kAccentColor,
+                            color: Theme.of(context).accentColor,
                             size: 17.0,
                           ),
                           SizedBox(width: 10.0),
                           Text(
-                            "${DateTime.now().weekday == alert.time.weekday ? "Today" : DateFormat.EEEE().format(alert.time)}, ${DateFormat.jm().format(alert.time)}",
+                            "${DateTime.now().weekday == alert.time.weekday ? "Today" : DateFormat.EEEE().format(alert.time)}, ${dateFormat.format(alert.time)}",
                             style: TextStyle(
                               color: kTextColor,
                               fontSize: 15.0,
@@ -83,7 +86,7 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                         children: <Widget>[
                           Icon(
                             Icons.receipt,
-                            color: kAccentColor,
+                            color: Theme.of(context).accentColor,
                             size: 17.0,
                           ),
                           SizedBox(width: 10.0),
@@ -98,13 +101,12 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                       ),
                     ],
                   ),
-                  // SizedBox(width: 30.0),
                   Positioned(
                     right: 0.0,
                     child: CustomPaint(
-                      foregroundPainter: RadialPainter(
+                      foregroundPainter: CountdownPainter(
                         bgColor: kBGColor,
-                        lineColor: getColor(context, percent),
+                        lineColor: _getColor(context, percent),
                         percent: percent,
                         width: 4.0,
                       ),
@@ -116,7 +118,7 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                             Text(
                               "$hoursLeft",
                               style: TextStyle(
-                                color: getColor(context, percent),
+                                color: _getColor(context, percent),
                                 fontSize: 26.0,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -124,7 +126,7 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
                             Text(
                               "hours left",
                               style: TextStyle(
-                                color: getColor(context, percent),
+                                color: _getColor(context, percent),
                                 fontSize: 13.0,
                               ),
                             ),
@@ -140,5 +142,11 @@ class _RecentsAlertsState extends State<RecentsAlerts> {
         );
       },
     );
+  }
+
+  _getColor(BuildContext context, double percent) {
+    if (percent >= 0.4) return Theme.of(context).accentColor;
+
+    return kHourColor;
   }
 }

@@ -10,6 +10,7 @@ class RecentHomeworks extends StatefulWidget {
 }
 
 class _RecentHomeworksState extends State<RecentHomeworks> {
+  DateFormat dateFormat = DateFormat("hh:mm a");
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -48,12 +49,12 @@ class _RecentHomeworksState extends State<RecentHomeworks> {
                         children: <Widget>[
                           Icon(
                             AntDesign.clockcircle,
-                            color: kAccentColor,
+                            color: Theme.of(context).accentColor,
                             size: 17.0,
                           ),
                           SizedBox(width: 10.0),
                           Text(
-                            "${DateTime.now().weekday == homework.dueTime.weekday ? "Today" : DateFormat.EEEE().format(homework.dueTime)}, ${DateFormat.jm().format(homework.dueTime)}",
+                            "${DateTime.now().weekday == homework.dueTime.weekday ? "Today" : DateFormat.EEEE().format(homework.dueTime)}, ${dateFormat.format(homework.dueTime)}",
                             style: TextStyle(
                               color: kTextColor,
                               fontSize: 16.0,
@@ -82,9 +83,9 @@ class _RecentHomeworksState extends State<RecentHomeworks> {
         });
       },
       shape: CircleBorder(
-        side: BorderSide(color: kAccentColor),
+        side: BorderSide(color: Theme.of(context).accentColor),
       ),
-      color: homework.isDone ? kAccentColor : Colors.transparent,
+      color: homework.isDone ? Theme.of(context).accentColor : Colors.transparent,
       child: homework.isDone ? Icon(Icons.check, color: Colors.white) : null,
     );
   }

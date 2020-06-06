@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ui/constants.dart';
-import 'package:ui/widgets/recents_alert.dart';
-import 'package:ui/widgets/recents_homework.dart';
+import 'package:ui/widgets/header.dart';
+import 'package:ui/widgets/recents_alerts.dart';
+import 'package:ui/widgets/recents_homeworks.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,30 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 30.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              SvgPicture.asset(
-                "assets/icons/grad_cap.png",
-                height: 70.0,
-              ),
-              Text(
-                "My School",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              CircleAvatar(
-                radius: 25.0,
-                backgroundImage: AssetImage("assets/images/44.jpg"),
-              ),
-            ],
-          ),
-        ),
+        Header(),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.0),
           child: TextField(
@@ -46,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(8.0),
               border: InputBorder.none,
-              fillColor: kPrimaryColor,
+              fillColor: Theme.of(context).primaryColor,
               filled: true,
               hintText: "Search",
               hintStyle: TextStyle(color: kTextColor),
@@ -61,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Container(
           padding: EdgeInsets.all(35.0),
           decoration: BoxDecoration(
-            color: kPrimaryColor,
+            color: Theme.of(context).primaryColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(50.0),
               topRight: Radius.circular(50.0),
@@ -83,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: Text(
                   "View all",
-                  style: TextStyle(color: kAccentColor, fontSize: 15.0),
+                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: 15.0),
                 ),
               ),
               SizedBox(height: 20.0),
@@ -100,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: Text(
                   "View all",
-                  style: TextStyle(color: kAccentColor, fontSize: 15.0),
+                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: 15.0),
                 ),
               ),
               SizedBox(height: 30.0),
