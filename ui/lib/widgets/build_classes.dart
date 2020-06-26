@@ -3,13 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:ui/constants.dart';
 import 'package:ui/models/classes.dart';
 
-class BuildClasses extends StatefulWidget {
-  @override
-  _BuildClassesState createState() => _BuildClassesState();
-}
-
-class _BuildClassesState extends State<BuildClasses> {
-  DateFormat dateFormat = DateFormat("hh:mm a");
+class BuildClasses extends StatelessWidget {
+  final DateFormat dateFormat = DateFormat("hh:mm a");
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,7 @@ class _BuildClassesState extends State<BuildClasses> {
                   ),
                 ),
                 SizedBox(width: 20.0),
-                _getTime(c),
+                _getTime(c, context),
                 SizedBox(width: 20.0),
                 Text(
                   c.subject,
@@ -145,7 +140,7 @@ class _BuildClassesState extends State<BuildClasses> {
     }
   }
 
-  _getTime(Classes c) {
+  _getTime(Classes c, context) {
     return Container(
       height: 25.0,
       width: 25.0,
@@ -158,11 +153,11 @@ class _BuildClassesState extends State<BuildClasses> {
           // width: 2.0,
         ),
       ),
-      child: _getChild(c),
+      child: _getChild(c, context),
     );
   }
 
-  _getChild(Classes c) {
+  _getChild(Classes c, context) {
     if (c.isPassed) {
       return Icon(
         Icons.check,

@@ -5,14 +5,10 @@ import 'package:ui/constants.dart';
 import 'package:ui/models/alert.dart';
 import 'package:ui/widgets/countdown_painter.dart';
 
-class RecentsAlerts extends StatefulWidget {
-  @override
-  _RecentsAlertsState createState() => _RecentsAlertsState();
-}
 
-class _RecentsAlertsState extends State<RecentsAlerts> {
+class RecentsAlerts extends StatelessWidget {
 
-  DateFormat dateFormat = DateFormat("hh:mm a");
+  final DateFormat dateFormat = DateFormat("hh:mm a");
 
   @override
   Widget build(BuildContext context) {
