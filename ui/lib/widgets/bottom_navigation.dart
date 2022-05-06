@@ -64,33 +64,33 @@ class _BottomNavigationState extends State<BottomNavigation> {
               icon: SvgPicture.asset(
                 "assets/icons/house.svg",
                 width: 35.0,
-                color: _selectedTab == 0 ? Theme.of(context).accentColor : kTextColor,
+                color: _selectedTab == 0 ? Theme.of(context).colorScheme.secondary : kTextColor,
               ),
-              title: SizedBox.shrink(),
+              label: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 "assets/icons/read_book.svg",
                 width: 35.0,
-                color: _selectedTab == 1 ? Theme.of(context).accentColor : kTextColor,
+                color: _selectedTab == 1 ? Theme.of(context).colorScheme.secondary : kTextColor,
               ),
-              title: SizedBox.shrink(),
+              label: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 "assets/icons/homework.svg",
                 width: 35.0,
-                color: _selectedTab == 2 ? Theme.of(context).accentColor : kTextColor,
+                color: _selectedTab == 2 ? Theme.of(context).colorScheme.secondary : kTextColor,
               ),
-              title: SizedBox.shrink(),
+              label: SizedBox.shrink(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 "assets/icons/comment.svg",
                 width: 35.0,
-                color: _selectedTab == 3 ? Theme.of(context).accentColor : kTextColor,
+                color: _selectedTab == 3 ? Theme.of(context).colorScheme.secondary : kTextColor,
               ),
-              title: SizedBox.shrink(),
+              label: SizedBox.shrink(),
             ),
           ],
         ),

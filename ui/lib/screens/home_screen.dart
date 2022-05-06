@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: Text(
                   "View all",
-                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: 15.0),
+                  style: TextStyle(color: Theme.of(context).colorScheme.secondary, fontSize: 15.0),
                 ),
               ),
               SizedBox(height: 20.0),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Center(
                 child: Text(
                   "View all",
-                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: 15.0),
+                  style: TextStyle(color: Theme.of(context).colorScheme.secondary, fontSize: 15.0),
                 ),
               ),
               SizedBox(height: 30.0),

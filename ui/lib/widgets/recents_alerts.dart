@@ -28,7 +28,7 @@ class RecentsAlerts extends StatelessWidget {
               height: 130.0,
               width: 15.0,
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   bottomLeft: Radius.circular(30.0),
@@ -64,7 +64,7 @@ class RecentsAlerts extends StatelessWidget {
                         children: <Widget>[
                           Icon(
                             AntDesign.clockcircle,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             size: 17.0,
                           ),
                           SizedBox(width: 10.0),
@@ -82,7 +82,7 @@ class RecentsAlerts extends StatelessWidget {
                         children: <Widget>[
                           Icon(
                             Icons.receipt,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             size: 17.0,
                           ),
                           SizedBox(width: 10.0),
@@ -141,7 +141,9 @@ class RecentsAlerts extends StatelessWidget {
   }
 
   _getColor(BuildContext context, double percent) {
-    if (percent >= 0.4) return Theme.of(context).accentColor;
+    if (percent >= 0.4) {
+      return Theme.of(context).colorScheme.secondary;
+    }
 
     return kHourColor;
   }

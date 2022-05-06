@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:intl/intl.dart';
@@ -83,7 +85,7 @@ class _RecentHomeworksState extends State<RecentHomeworks> {
         });
       },
       shape: CircleBorder(
-        side: BorderSide(color: Theme.of(context).accentColor),
+        side: BorderSide(color: Theme.of(context).colorScheme.secondary),
       ),
       color: homework.isDone ? Theme.of(context).accentColor : Colors.transparent,
       child: homework.isDone ? Icon(Icons.check, color: Colors.white) : null,
