@@ -46,7 +46,7 @@ class BuildClasses extends StatelessWidget {
                         height: 25.0,
                         width: 40.0,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).colorScheme.secondary,
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                         child: Center(
@@ -77,8 +77,8 @@ class BuildClasses extends StatelessWidget {
                         Icon(
                           Icons.location_on,
                           color: c.isPassed
-                              ? Theme.of(context).accentColor.withOpacity(0.3)
-                              : Theme.of(context).accentColor,
+                              ? Theme.of(context).colorScheme.secondary.withOpacity(0.3)
+                              : Theme.of(context).colorScheme.secondary,
                           size: 20.0,
                         ),
                         SizedBox(width: 8.0),
@@ -100,8 +100,8 @@ class BuildClasses extends StatelessWidget {
                         Icon(
                           Icons.person,
                           color: c.isPassed
-                              ? Theme.of(context).accentColor.withOpacity(0.3)
-                              : Theme.of(context).accentColor,
+                              ? Theme.of(context).colorScheme.secondary.withOpacity(0.3)
+                              : Theme.of(context).colorScheme.secondary,
                           size: 20.0,
                         ),
                         SizedBox(width: 8.0),
@@ -148,8 +148,8 @@ class BuildClasses extends StatelessWidget {
         shape: BoxShape.circle,
         border: Border.all(
           color: c.isPassed
-              ? Theme.of(context).accentColor.withOpacity(0.3)
-              : Theme.of(context).accentColor,
+              ? Theme.of(context).colorScheme.secondary.withOpacity(0.3)
+              : Theme.of(context).colorScheme.secondary,
           // width: 2.0,
         ),
       ),
@@ -162,15 +162,15 @@ class BuildClasses extends StatelessWidget {
       return Icon(
         Icons.check,
         color: c.isPassed
-            ? Theme.of(context).accentColor.withOpacity(0.3)
-            : Theme.of(context).accentColor,
+            ? Theme.of(context).colorScheme.secondary.withOpacity(0.3)
+            : Theme.of(context).colorScheme.secondary,
         size: 15.0,
       );
     } else if (c.isHappening) {
       return Container(
         margin: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
           shape: BoxShape.circle,
         ),
       );

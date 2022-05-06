@@ -17,9 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'GoSchool UI',
       theme: ThemeData(
         primaryColor: Color(0xFF202328),
-        accentColor: Color(0xFF63CF93),
         backgroundColor: Color(0xFF12171D),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        visualDensity: VisualDensity.adaptivePlatformDensity, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFF63CF93)),
       ),
       home: WelcomeScreen(),
     );
